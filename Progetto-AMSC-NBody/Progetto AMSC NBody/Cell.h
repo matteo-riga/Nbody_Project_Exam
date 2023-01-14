@@ -103,33 +103,7 @@ class Cell
     /// </summary>
     void buildTree(Cell &c, unsigned int depth, double color)
     {
-        /*
-        std::cout << "\n";
-        std::cout << "building tree" << std::endl;
-        std::cout << "particles inside : " << c.particles.size() << std::endl;
-        std::cout << "color of particles : " << color << std::endl;;
-        std::cout << "octant : " << std::endl;
-        std::cout << c.size[0] << std::endl;
-        std::cout << c.size[1] << std::endl;
-        std::cout << c.size[2] << std::endl;
-        std::cout << "c.particles.size > 1  " << (c.particles.size() > 1) << std::endl;
-        std::cout << "size inside " << c.particles.size()  << std::endl;
-        */
-
-        // modificare per colorare meglio l'albero
-        /*
-        for (Particle<dim> *p : c.particles)
-        {
-            p -> color = color;
-        }
-        */
-
-        /*
-        std::cout << "size " << c.particles.size() << std::endl;
-        std::cout << "empty ? " << c.particles.empty() << std::endl;
-        std::cout << "condition" << (c.particles.size() > 1 && c.particles.empty()) << std::endl;
-        */
-        //std::cout << "here" << std::endl;
+        
 
         if (c.particles.size() > 1 && c.particles.empty())
         {
