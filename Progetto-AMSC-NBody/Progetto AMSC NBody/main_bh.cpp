@@ -40,8 +40,6 @@ std::string profiling_file_name = "Profiler_.txt";
 std::vector<Particle<DIM>> particles;
 // create vector of pointers to Particle objects
 std::vector<Particle<DIM>*> pointer_to_particles;
-// create vector of shared pointers to Particle objects
-//std::vector<std::shared_ptr<Particle<DIM>>> pointer_to_particles;
 
 void loadParticles(std::vector<Particle<DIM>> &, const std::string &);
 
@@ -121,7 +119,6 @@ int mainLoop()
 		auto matrixComp_start = chrono::high_resolution_clock::now();
 
 		do_simulation_step_bh(pointer_to_particles, 1);
-		//do_simulation_step_bh_vector(particles, 1);
 
 		// compute forces
 		auto matrixComp_end = chrono::high_resolution_clock::now();
