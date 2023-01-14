@@ -49,7 +49,7 @@ int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned 
 
 	unsigned int total_particles = particles.size();
 	Vector<dim> center = Vector<dim>();
-	Vector<dim> size = Vector<dim>({4000.0,4000.0,4000.0}); // come iniziallizzo ???
+	Vector<dim> size = Vector<dim>({4000.0,4000.0,4000.0}); 
 	Cell<dim> root = Cell<dim>(center, size, particles);
 
 	//std::cout << "n of total particles : " << total_particles << std::endl;
