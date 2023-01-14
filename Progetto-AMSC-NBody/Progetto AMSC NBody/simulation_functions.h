@@ -85,28 +85,3 @@ int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned 
 
 	return 0;
 }
-
-/*
-template <unsigned int dim>
-int do_simulation_step_bh_vector(std::vector<Particle<dim>> particles, const unsigned int &ticks_step)
-{
-	double initial_size = 4000.0;
-	Vector<dim> center = Vector<dim>();
-	Node<dim> root = Node<dim>(center, 0.0, center, initial_size);
-
-	root.buildTree(root, particles, 1.0);
-
-	Vector<dim> position = Vector<dim>();
-	double theta = 0.5;
-	Vector<dim> force = root.force(root, position, theta);
-
-	// update positions of particles
-	#pragma omp parallel for
-	for (int i = 0; i < particles.size(); ++i)
-	{
-		particles[i].calcNewPosition(ticks_step);
-	}
-
-	return 0;
-} 
-*/
