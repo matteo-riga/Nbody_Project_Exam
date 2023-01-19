@@ -4,7 +4,7 @@ Implementation of Barnes-Hut algorithm to reduce calculations of particles inter
 
 executable is found in:
 
-Nbody_Project_Exam/Progetto-AMSC-NBody/build/Progetto AMSC NBody/
+`Nbody_Project_Exam/Progetto-AMSC-NBody/build/Progetto AMSC NBody/`
 
 and can be run with:
 
