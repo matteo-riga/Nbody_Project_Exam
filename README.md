@@ -1,5 +1,7 @@
 # Progetto-AMSC-NBody
 
+Implementation of Barnes-Hut algorithm to reduce calculations of particles interactions.
+
 # How to run
 ## Mandatory options
 The user must select at one of the two
