@@ -1,0 +1,13 @@
+NBody profiling
+--- SIMULATION INFO ---
+Problem dimension: 3D
+Particle amount:            1000
+Number of iterations:           10000
+Simulation time resolution:              10 ticks per second
+Simulation elapsed time:          100000 seconds
+Graphics refresh time:             100 milliseconds
+Screen resolution:  1024x 1024
+
+--- TIMING AND THREADS INFO ---
+Total duration:          108663 ms
+Iteration mean duration:           10859 us

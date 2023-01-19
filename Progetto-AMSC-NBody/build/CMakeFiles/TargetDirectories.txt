@@ -1,0 +1,6 @@
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/CMakeFiles/rebuild_cache.dir
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/CMakeFiles/edit_cache.dir
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/CMakeFiles/deploy.dir
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/Progetto AMSC NBody/CMakeFiles/edit_cache.dir
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/Progetto AMSC NBody/CMakeFiles/rebuild_cache.dir
+/home/jellyfish/shared-folder/AMSC/BarnesHut2/ProgettoNBody/Progetto-AMSC-NBody/build/Progetto AMSC NBody/CMakeFiles/NBody.dir
