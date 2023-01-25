@@ -53,12 +53,17 @@ public:
 	/// <summary>
 	/// Vector-to-vector sum
 	/// </summary>
-	constexpr friend Vector<dim> operator+(const Vector<dim> lhs, const Vector<dim>& rhs)
+	friend Vector<dim> operator+(const Vector<dim> lhs, const Vector<dim>& rhs)
 	{
 		// Apparently declaring the first one with no reference is more optimised
 		Vector<dim> out(lhs);
 		out += rhs;
 		return out;
+
+		/*
+		lhs += rhs;
+		return lhs;
+		*/
 	}
 
 	/// <summary>

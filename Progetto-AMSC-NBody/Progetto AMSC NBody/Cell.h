@@ -153,10 +153,25 @@ class Cell
             
             c.particles.clear();
 
+            // SERIAL BUILDING
+            /*
             for(unsigned int i = 0; i < OCTREE; ++i)
             {
                 buildTree(*(c.children[i]), depth+1, color);   
             }
+            */
+
+            // PARALLEL BUILDING
+            #pragma omp parallel
+                for(unsigned int i = 0; i < OCTREE; ++i)
+                {
+                    #pragma omp single
+                        #pragma omp task
+                        buildTree(*(c.children[i]), depth+1, color);   
+                    
+                }
+            
+            
         }
     }
 
@@ -186,12 +201,15 @@ class Cell
     }
 
 
-    //private:
+
+    // particles is a vector of pointers to particles
+    std::vector<Particle<dim>*> particles;
+
+
+    private:
     // Variables
     // center represents the spatial center of the cell, size represents its size
     Vector<dim> center, size;
-    // particles is a vector of pointers to particles
-    std::vector<Particle<dim>*> particles;
     // children is a vector of pointers to cells
     std::array<Cell<dim>*, OCTREE> children;
 };
