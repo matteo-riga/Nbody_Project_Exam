@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -48,9 +49,9 @@ class JsonParser
         return s;
     }
 
-    std::map<std::string, std::string> _parse_json(const std::string& json) {
+    std::unordered_map<std::string, std::string> _parse_json(const std::string& json) {
 
-        std::map<std::string, std::string> values;
+        std::unordered_map<std::string, std::string> values;
         
         // Find the start and end of the object
         size_t object_start = json.find('{');

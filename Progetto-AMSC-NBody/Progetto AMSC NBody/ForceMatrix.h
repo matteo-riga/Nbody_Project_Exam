@@ -2,7 +2,6 @@
 #include <vector>
 #include <set>
 
-#include "Utils.h"
 
 #include "Particle.h"
 #include "Vector.h"

@@ -7,6 +7,8 @@
 #include <cmath>
 #include <fstream>
 
+//using namespace constants;
+
 
 // colors of output to be read by python
 double green = 65280;

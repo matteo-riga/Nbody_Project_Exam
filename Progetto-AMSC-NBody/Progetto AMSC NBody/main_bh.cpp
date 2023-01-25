@@ -27,6 +27,7 @@
 
 using namespace std;
 
+
 long long int forceComp_mean_durations_per_tick = 0, posComp_mean_durations_per_tick = 0, matrixComp_mean_duration = 0;
 void saveParticles(const std::vector<Particle<DIM>> &, const std::string &);
 void saveParticlesPtr(const std::vector<Particle<DIM>*> particles, const std::string &filename);
