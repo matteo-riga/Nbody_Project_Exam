@@ -39,9 +39,9 @@ public:
 	/// </summary>
 	/// <param name =
 	Particle(unsigned int id,
-		Vector<dim> position,
-		Vector<dim> speed,
-		Vector<dim> acceleration,
+		const Vector<dim> & position,
+		const Vector<dim> & speed,
+		const Vector<dim> & acceleration,
 		double mass) :
 		ID(id),
 		pos(position),

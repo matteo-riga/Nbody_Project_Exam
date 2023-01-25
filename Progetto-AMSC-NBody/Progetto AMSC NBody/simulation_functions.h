@@ -48,13 +48,13 @@ template <unsigned int dim>
 int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned int &ticks_step)
 {
 
-	//unsigned int total_particles = particles.size();
-	Vector<dim> center = Vector<dim>();
-	Vector<dim> size = Vector<dim>({4000.0,4000.0,4000.0}); 
-	Cell<dim> root = Cell<dim>(center, size, particles);
+	unsigned int total_particles = particles.size();
+	const Vector<dim> center = Vector<dim>();
+	const Vector<dim> size = Vector<dim>({4000.0,4000.0,4000.0}); 
+	Cell<dim> root = Cell<dim>(center, size);
 
 	//std::cout << "n of total particles : " << total_particles << std::endl;
-	//std::cout << "sizeof root particles : " << particles.size() << std::endl;
+	//std::cout << "size of root particles : " << particles.size() << std::endl;
 
 	// calculate forces
 	//	1. build tree
@@ -77,7 +77,7 @@ int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned 
 
 	// update positions
 	#pragma omp parallel for
-	for (unsigned int i = 0; i < particles.size(); ++i)
+	for (unsigned int i = 0; i < total_particles; ++i)
 	{
 		particles[i] -> calcNewPosition(ticks_step);
 	}

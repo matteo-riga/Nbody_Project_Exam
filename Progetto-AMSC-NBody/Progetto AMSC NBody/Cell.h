@@ -21,12 +21,11 @@ class Cell
     /// <summary>
     /// Cell constructor with parameters
     /// </summary>
-    Cell(Vector<dim> ctr, 
-        Vector<dim> size,
-        std::vector<Particle<dim>*> bodies) : 
+    Cell(const Vector<dim> & ctr, 
+         const Vector<dim> & size
+        ) : 
         center(ctr), 
         size(size)
-        //, particles(bodies)
     {}
 
     /// <summary>
@@ -69,7 +68,7 @@ class Cell
                 {
                     Vector<dim> r = q->pos - p->pos;
                     const double r_norm = r.euNorm();
-                    p->accel = p->accel + (r *(q->mass / (r_norm*r_norm*r_norm))) / p->mass;
+                    p->accel = p->accel + (r * (q->mass / (r_norm * r_norm * r_norm))) / p->mass;
                 }
             }
         }
@@ -109,14 +108,14 @@ class Cell
         {
             
             Vector<dim> h = c.size / 2;
-            std::vector<Particle<dim>*> temp;
+            
 
             for (unsigned int i = 0; i < OCTREE; ++i)
             {
                 unsigned int x(i&1), y((i>>1)&1), z((i >> 2)&1);
                 
                 Vector<dim> offset = Vector<dim>({x * h[0] - 2000, y * h[1] - 2000, z * h[2] - 2000});
-                c.children[i] = new Cell((center + offset), h, temp); 
+                c.children[i] = new Cell((center + offset), h); 
             }
 
             for (Particle<dim> *p : c.particles)
@@ -166,8 +165,9 @@ class Cell
                 for(unsigned int i = 0; i < OCTREE; ++i)
                 {
                     #pragma omp single
-                        #pragma omp task
-                        buildTree(*(c.children[i]), depth+1, color);   
+                    #pragma omp task
+                    buildTree(*(c.children[i]), depth+1, color);   
+                    #pragma omp taskwait
                     
                 }
             

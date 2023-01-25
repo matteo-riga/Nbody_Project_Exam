@@ -9,5 +9,5 @@ Graphics refresh time:             100 milliseconds
 Screen resolution:  1024x 1024
 
 --- TIMING AND THREADS INFO ---
-Total duration:          160697 ms
-Iteration mean duration:           16053 us
+Total duration:          237224 ms
+Iteration mean duration:           23689 us
