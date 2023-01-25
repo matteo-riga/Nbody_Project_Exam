@@ -31,7 +31,7 @@ class Cell
 
     /// <summary>
     /// Cell constructor without parameters
-    /// everything is initialized to 0 and NULL
+    /// everything is initialized to 0 and nullptr
     /// </summary>
     Cell()
     {
@@ -40,7 +40,7 @@ class Cell
 
         for (unsigned int i = 0; i < OCTREE; ++i)
         {
-            children[i] = NULL;
+            children[i] = nullptr;
         }
         
     }
@@ -51,7 +51,7 @@ class Cell
     /// </summary>
     bool isLeaf() const
     {
-        return children[0] == NULL;
+        return children[0] == nullptr;
     }
 
 
@@ -68,7 +68,7 @@ class Cell
                 if(p->pos != q->pos)
                 {
                     Vector<dim> r = q->pos - p->pos;
-                    double r_norm = r.euNorm();
+                    const double r_norm = r.euNorm();
                     p->accel = p->accel + (r *(q->mass / (r_norm*r_norm*r_norm))) / p->mass;
                 }
             }
@@ -76,9 +76,9 @@ class Cell
 
         else
         {
-            double size_norm = c.size.euNorm();
+            const double size_norm = c.size.euNorm();
             Vector<dim> r = c.center - p->pos;
-            double r_norm = r.euNorm();
+            const double r_norm = r.euNorm();
 
             if(size_norm/r_norm < theta)
             {
@@ -121,7 +121,8 @@ class Cell
 
             for (Particle<dim> *p : c.particles)
             {
-                
+                // 3D version
+                /*
                 for (unsigned int i = 0; i < OCTREE; ++i)
                 {
                     unsigned int x = (p -> pos[0]) > (c.children[i] -> center[0]);
@@ -131,6 +132,22 @@ class Cell
                     unsigned int j = x + (y << 1) + (z << 2);
                     c.children[j] -> particles.emplace_back(p);
                 }
+                */
+
+                // dimension independent version
+                
+                for (unsigned int i = 0; i < OCTREE; ++i)
+                {
+                    unsigned int j = 0;
+                    for(unsigned int d = 0; d < DIM; ++d)
+                    {
+                        unsigned int x = (p -> pos[d]) > (c.children[i] -> center[d]);
+                        j += x << d;
+                    }
+                    
+                    c.children[j] -> particles.emplace_back(p);
+                }
+                
             }
             
             

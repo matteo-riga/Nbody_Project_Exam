@@ -7,7 +7,8 @@
 #include "Cell.h"
 
 
-#define THETA 0.5 // barnes hut parameter
+//#define THETA 0.5 // barnes hut parameter
+constexpr double theta = 0.5;
 
 template <unsigned int dim>
 int do_simulation_step(std::vector<Particle<dim>> &particles, const unsigned int &ticks_step)
@@ -47,7 +48,7 @@ template <unsigned int dim>
 int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned int &ticks_step)
 {
 
-	unsigned int total_particles = particles.size();
+	//unsigned int total_particles = particles.size();
 	Vector<dim> center = Vector<dim>();
 	Vector<dim> size = Vector<dim>({4000.0,4000.0,4000.0}); 
 	Cell<dim> root = Cell<dim>(center, size, particles);
@@ -66,17 +67,17 @@ int do_simulation_step_bh(std::vector<Particle<dim>*> particles, const unsigned 
 
 	
 	//	2. calculate interactions
-	//root.updateForce(root, particles, THETA);
+	//root.updateForce(root, particles, theta);
 	
 	for(auto particle : particles)
 	{
-		root.updateForce(particle, root, THETA);
+		root.updateForce(particle, root, theta);
 	}
 	
 
 	// update positions
 	#pragma omp parallel for
-	for (int i = 0; i < particles.size(); ++i)
+	for (unsigned int i = 0; i < particles.size(); ++i)
 	{
 		particles[i] -> calcNewPosition(ticks_step);
 	}

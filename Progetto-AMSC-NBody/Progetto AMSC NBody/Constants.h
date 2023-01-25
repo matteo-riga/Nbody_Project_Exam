@@ -7,7 +7,7 @@
 /// <summary>
 /// Particle dimension (2D, 3D)
 /// </summary>
-const unsigned int DIM = 3;
+constexpr unsigned int DIM = 3;
 
 extern unsigned int total_particles;
 

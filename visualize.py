@@ -3,8 +3,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-first_status_filepath  = "../ProgettoNBody/Progetto-AMSC-NBody/build/Progetto AMSC NBody/particles_initial_output.pt"
-filepath = "../ProgettoNBody/Progetto-AMSC-NBody/build/Progetto AMSC NBody/particles_output.pt"
+first_status_filepath  = "Progetto-AMSC-NBody/build/Progetto AMSC NBody/particles_initial_output.pt"
+filepath = "Progetto-AMSC-NBody/build/Progetto AMSC NBody/particles_output.pt"
 
 def visualize_file(filepath):
     ints = np.fromfile(filepath, dtype=int)

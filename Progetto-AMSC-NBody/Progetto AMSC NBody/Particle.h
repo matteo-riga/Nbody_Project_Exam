@@ -20,6 +20,9 @@ double gray = 11119017;
 std::vector<double> sample_colors = {red, green, blue, yellow, cyan, pink, black, gray};
 
 
+static const double mass_constant_k = 6.673e-11;//0.001;
+static const double tol = 1e-3;
+
 /// <summary>
 /// Represents the basic particles that interact in the world
 /// </summary>
@@ -125,9 +128,9 @@ public:
 
 	// TODO Set value
 	// Mass constant k
-	const double mass_constant_k = 6.673e-11;//0.001;
+	//static const double mass_constant_k = 6.673e-11;//0.001;
 
-	const double tol = 1e-3;
+	//static const double tol = 1e-3;
 
 	// TODO Electric constant
 
@@ -186,18 +189,18 @@ void Particle<dim>::updateResultingForce(const Vector<dim>& resulting_force)
 template<unsigned int dim>
 void Particle<dim>::_updateSpeed(const unsigned int& delta_ticks)
 {
-	for (int i = 0; i < dim; ++i)
+	for (unsigned int i = 0; i < dim; ++i)
 	{
-		speed[i] += accel[i] * ((double)delta_ticks / ticks_per_second);
+		speed[i] += accel[i] * (static_cast<double>(delta_ticks) / ticks_per_second);
 	}
 }
 
 template<unsigned int dim>
 void Particle<dim>::_updatePos(const unsigned int& delta_ticks)
 {
-	for (int i = 0; i < dim; ++i)
+	for (unsigned int i = 0; i < dim; ++i)
 	{
-		pos[i] += speed[i] * ((double)delta_ticks / ticks_per_second);
+		pos[i] += speed[i] * (static_cast<double>(delta_ticks) / ticks_per_second);
 	}
 }
 
@@ -210,7 +213,7 @@ Vector<dim> Particle<dim>::calcForce(const Particle<dim>& other) const
 	{
 		return Vector<dim>();
 	}
-	return displacement * (/*-*/mass_constant_k * mass * other.getMass()) / (pow(distance, 3));
+	return displacement * (/*-*/mass_constant_k * mass * other.getMass()) / (distance*distance*distance);
 }
 
 template<unsigned int dim>

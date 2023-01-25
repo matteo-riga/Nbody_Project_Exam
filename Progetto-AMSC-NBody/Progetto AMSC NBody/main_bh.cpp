@@ -80,7 +80,7 @@ int mainLoop()
 
 		std::cout << "JSON file loaded." << std::endl;
 
-		for (int i = 0; i < total_particles; i++)
+		for (unsigned int i = 0; i < total_particles; i++)
 		{
 			Vector<DIM> position, speed, acceleration;
 			// generate mass
@@ -271,7 +271,7 @@ void loadParticles(std::vector<Particle<DIM>> &particles, const std::string &fil
 	}
 
 	infile.read(reinterpret_cast<char *>(&total_particles), sizeof(unsigned int));
-	for (int i = 0; i < total_particles; i++)
+	for (unsigned int i = 0; i < total_particles; i++)
 	{
 		Particle<DIM> particle(i);
 		particle.loadFromFile(infile);
